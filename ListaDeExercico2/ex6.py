@@ -12,11 +12,25 @@ print("Os tempos inseridos devem ser no formato: hh:mm:ss")
 tempo1 = input("Informe o primeiro tempo: ")
 tempo2 = input("Informe o segundo tempo: ")
 
+
 # Computação
+def mySplit(strings, separator):
+    l = []
+    cursor = ""
+
+    for char in strings:
+        if char == separator:
+            l.append(cursor)
+            cursor = ""
+            continue
+        cursor += char
+
+    l.append(cursor)
+    return l
 
 # * Convertando os valores inseridos do tipo str para uma lista de strings, str -> list[str]
-tempo1Lista = tempo1.split(":")
-tempo2Lista = tempo2.split(":")
+tempo1Lista = mySplit(tempo1, ":")
+tempo2Lista = mySplit(tempo2, ":")
 
 #! Observação: por padrão, as posições de uma lista ou vetor se iniciam na posição [0]
 

@@ -1,176 +1,205 @@
-def main():
-    print("___________________________________________________")
-    print("\n\n Informe abaixo, qual exercício você deseja fazer\n")
-    print("___________________________________________________\n")
+import os
 
-    parans = int(input())
 
-    print("Neste exercício você deve:")
-    match parans:
-        case 1:
-            um()
-
-        case 2:
-            dois()
-
-        case 3:
-            tres()
-
-        case 4:
-            quatro()
-
-        case 5:
-            cinco()
-
-        case 6:
-            seis()
-
-        case 7:
-            sete()
-
-        case 8:
-            oito()
-
-        case 9:
-            nove()
-
-        case 10:
-            dez()
-
-        case 11:
-            onze()
-
-        case 12:
-            doze()
-
-        case 13:
-            treze()
-
-        case 14:
-            quatorze()
-
-        case 15:
-            quinze()
-
-        case 16:
-            dezesseis()
-
-        case 17:
-            dezessete()
-
-        case 18:
-            dezoito()
-
-        case 19:
-            dezenove()
-
-        case 20:
-            vinte()
-
-        case 21:
-            vinte_e_um()
-
-        case 22:
-            vinte_e_dois()
-
-        case 23:
-            vinte_e_tres()
+####################################################################################################
+def clear():
+    os.system("cls")
 
 
 ####################################################################################################
 def um():
-    print("-> Escrever um programa que recebe um número inteiro positivo N")
-    print("-> Somar os N primeiros inteiros positivos e mostra o resultado na tela")
-    N = int(input())
+    print(
+        "1) O programa recebe um número inteiro positivo N, soma os N primeiros inteiros positivos, e mostra o resultado na tela.\n"
+    )
+    print("\nInsira um número inteiro, talque N > 0")
 
+    N = int(input())
+    clear()
     i = 1
 
-    soma = 0
+    mais = " + "
+
+    if N == 1:
+        mais = ""
+
+    soma = str(i) + mais
+    result = 0
 
     while i <= N:
-        soma += i
+        if i == N:
+            mais = ""
+
+        if i > 1 and i <= N:
+            soma += str(i) + mais
+
+        result += i
         i += 1
-    print(soma)
+    print("O número inserido foi: " + str(N))
+    print("A soma desse número é: " + soma)
+    print("E o resultado da soma é: " + str(result) + "\n")
 
 
 ####################################################################################################
 def dois():
-    print("-> Escrever um programa que recebe um número inteiro positivo N")
-    print("-> Imprimir os N primeiros números ímpares naturais")
+    print(
+        "2) O programa recebe um número inteiro positivo N, e imprime os N primeiros números ímpares.\n"
+    )
+    print("\nInsira um número inteiro, talque N > 0")
+
     N = int(input())
+    clear()
 
     i = 1
-
-    impares = 1
+    virgula = ", "
+    impares = str(i) + virgula
 
     while i <= N * 2:
-        if i % 2 != 0:
-            print(impares)
-            impares += 2
+        if i % 2 != 0 and i != 1:
+            impares += str(i) + virgula
+
+        if i == N * 2 - 4:
+            virgula = " e "
+        if i > N * 2 - 3:
+            virgula = ""
         i += 1
+
+    print("Número informado foi: " + str(N))
+    print("Os " + str(N) + " primeros números impares são: " + impares + "\n")
 
 
 ####################################################################################################
 def tres():
+    print(
+        "3) O programa recebe um número inteiro positivo N, e imprime o fatorial desse número.\n"
+    )
+    print("\nInsira um número inteiro, talque N > 0")
+
     N = int(input())
+    clear()
+
+    n = N
 
     fat = 1
+    vezes = " * "
+    multi = str(N) + "! = "
 
     while N != 0:
-        fat = fat * (N)
+        fat = fat * N
+
+        if N == 1:
+            vezes = ""
+
+        multi += str(N) + vezes
         N = N - 1
-    print(fat)
+
+    print("Número informado foi: " + str(n))
+    print(multi)
+    print("A multiplicação de " + str(n) + "! é de: " + str(fat) + "\n")
 
 
 ####################################################################################################
 def quatro():
+    print(
+        "4) O programa recebe um número inteiro positivo N, e imprima as N primeiras potências de 2\n"
+    )
+    print("\nInsira um número inteiro, talque N > 0")
+
     N = int(input())
+    clear()
 
     i = 0
 
     pot = 2**i
+    concat = ""
 
     while i < N:
-        print(pot)
+        concat += "2^" + str(i) + " = " + str(pot) + " \n"
         pot *= 2
         i += 1
+    print("O número inserido foi: " + str(N))
+    print(concat)
 
 
 ####################################################################################################
 def cinco():
+    print(
+        "5) O programa recebe um número inteiro positivo N, e soma a sequência dos N primeiros números inseridos\n"
+    )
     N = int(input())
+    clear()
 
     i = 0
 
     soma = 0
+    conct = ""
+    sinal = " + "
 
     while i < N:
         x = int(input())
+
+        if x < 0:
+            sinal = " - "
+            y = x * (-1)
+        else:
+            sinal = " + "
+
+        if i == 0:
+            conct += str(x)
+        else:
+            if x > 0:
+                conct += sinal + str(x)
+            else:
+                conct += sinal + str(y)
         soma += x
         i += 1
-    print(soma)
+
+    clear()
+
+    if N == 0:
+        print("\n Por favor, insira um número maior que 0\n ")
+        cinco()
+    elif N == 1:
+        print("Você inseriu 1 número")
+        print("A soma é: 1")
+    else:
+        print("Você inseriu " + str(N) + " números")
+        print("A soma desses números é: " + conct)
+    print("O resultado dessa soma é: " + str(soma) + "\n")
 
 
 ####################################################################################################
 def seis():
+    print(
+        "O programa recebe um número inteiro positivo N, e calcular qual é a soma dos números positivos que foram inseridos."
+    )
     N = int(input())
 
     i = 0
 
     soma = 0
 
+    sinal = " + "
+    concat = ""
     while i < N:
         x = int(input())
 
+        if i == N - 1:
+            sinal = ""
         if x > 0:
             soma += x
+            concat += str(x) + sinal
         i += 1
 
-    print(soma)
+    clear()
+    print("A soma é: " + concat)
+    print("O resultado dessa soma é: " + str(soma) + "\n")
 
 
 ####################################################################################################
 def sete():
+    print(
+        "O programa recebe um número inteiro positivo N, e fazer a soma dos números pares e dos números ímpares"
+    )
     N = int(input())
 
     i = 0
@@ -187,50 +216,107 @@ def sete():
             impar += x
         i += 1
 
-    print(par, impar)
-
 
 ####################################################################################################
 def oito():
-    i = 0
+    print("Insira a quais foram as temperas médias nesta semana")
+    i = 1
 
     abaixo = 0
 
-    while i < 7:
-        celsius = float(input())
+    while i <= 7:
+        celsius = float(input("Dia " + str(i) + ": "))
 
         if celsius < 0:
             abaixo += 1
         i += 1
 
-    print(abaixo)
+    clear()
+
+    if abaixo == 0:
+        print("Nenhum dia da semana a temperatura foi abaixo de 0")
+    elif abaixo == 1:
+        print("Durante está semana teve 1 dia que a temperatura foi abaixo de 0")
+    else:
+        print(
+            "Durante a semana teve "
+            + str(i)
+            + " dias da semana que a temperatura foi a abaixo de 0"
+        )
+    print("\n")
 
 
 ####################################################################################################
 def nove():
-
+    print(
+        "\nO programa recebe um número inteiro positivo N, logo após receba a sequência de N números interios, e imprima quantos são positivos e quantps são não-positivos"
+    )
+    print("Um número é não-positivo se é negativo ou se é igual a 0 (zero)\n")
     N = int(input())
+    clear()
 
     i = 0
 
+    virgula = ""
+
     positive = 0
+    concatPositive = ""
+
+    concatNegatitive = ""
     notPositive = 0
 
     while i < N:
         x = int(input())
 
+        if positive == 0 or notPositive == 0:
+            virgula = ""
+
         if x > 0:
+            if positive > 0:
+                virgula = ", "
+            concatPositive += virgula + str(x)
             positive += 1
         else:
+            if notPositive > 0:
+                virgula = ", "
+            concatNegatitive += virgula + str(x)
             notPositive += 1
-
         i += 1
 
-    print(positive, notPositive)
+    clear()
+    print("\n")
+    if N == 1 and N != 0:
+        print("Você desejava inserir " + str(N) + " número")
+    else:
+        print("Você desejava inserir " + str(N) + " números")
+
+    if notPositive == 1 and notPositive != 0:
+        print("Você inseriu um número negativos e ele é: " + concatNegatitive)
+    else:
+        print(
+            "Você inseriu "
+            + str(notPositive)
+            + " números negativos e eles são: "
+            + concatNegatitive
+        )
+
+    if positive == 1 and positive != 0:
+        print("Você inseriu um número positivo e ele é: " + concatPositive)
+    else:
+        print(
+            "Você inseriu "
+            + str(positive)
+            + " números positivos e eles são: "
+            + concatPositive
+        )
+    print("\n")
 
 
 ####################################################################################################
 def dez():
+    print(
+        "O programa recebe um N (talque N > 0) inteiro, e uma sequência de números inteiros positivos"
+    )
     N = int(input())
 
     i = 0
@@ -260,25 +346,22 @@ def onze():
     while i <= 7:
         discosVendidos = float(input())
 
-        if i == 1:
-            maior = discosVendidos
-
         if discosVendidos > maior:
             maior = discosVendidos
             dia = i
         i += 1
 
-    if i == 1:
+    if dia == 1:
         print("Domingo")
-    elif i == 2:
+    elif dia == 2:
         print("Segunda")
-    elif i == 3:
+    elif dia == 3:
         print("Terça")
-    elif i == 4:
+    elif dia == 4:
         print("Quarta")
-    elif i == 5:
+    elif dia == 5:
         print("Quinta")
-    elif i == 6:
+    elif dia == 6:
         print("Sexta")
     else:
         print("Sábado")
@@ -337,26 +420,27 @@ def treze():
 def quatorze():
     N = int(input())
 
-    i = 0
-
     iguais = ""
+    encontrei = False
     ultimoDigito = N % 10
+
     N = N // 10
 
-    while N > 0:
+    while N > 0 and encontrei == False:
         proximoDigito = N % 10
 
         if ultimoDigito == proximoDigito:
-            if i % 2 == 0:
-                iguais += str(ultimoDigito) + str(proximoDigito)
-            else:
-                iguais += str(ultimoDigito)
-            print(iguais)
-        else:
-            i = 0
+            iguais += str(ultimoDigito) + str(proximoDigito)
+            encontrei = True
         ultimoDigito = proximoDigito
         N = N // 10
-        i += 1
+
+    clear()
+    print("O número informado foi: " + str(N))
+    if encontrei:
+        print("Sim")
+    else:
+        print("Não")
 
 
 ####################################################################################################
@@ -405,8 +489,10 @@ def dezessete():
         passo = True
         while passo != False:
             x = int(input())
+
             if x == 0:
                 passo = False
+
             if x % 2 == 0:
                 par += x
             else:
@@ -490,6 +576,7 @@ def vinte():
                     i = 0
             i -= 1
         print(maiorDiv)
+
     mdc()
 
 
@@ -508,4 +595,20 @@ def vinte_e_tres():
     print()
 
 
-main()
+def palindromo():
+    char = input()
+
+    i = 0
+    j = len(char) - 1
+    pali = True
+
+    while i < j - i and pali:
+        if char[i] != char[j - i]:
+            pali = False
+        
+        i = i + 1
+
+    if pali:
+        print("Palindromo")
+    else:
+        print("Não é um palindromo")

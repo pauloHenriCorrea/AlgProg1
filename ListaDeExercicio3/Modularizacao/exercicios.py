@@ -155,8 +155,6 @@ def cinco():
         soma += x
         i += 1
 
-    clear()
-
     if N == 0:
         print("\n Por favor, insira um número maior que 0\n ")
         cinco()
@@ -242,7 +240,7 @@ def oito():
     else:
         print(
             "Durante a semana teve "
-            + str(i)
+            + str(abaixo)
             + " dias da semana que a temperatura foi a abaixo de 0"
         )
     print("\n")

@@ -1,4 +1,4 @@
-from exercicios import (
+from Modularizacao.exercicios import (
     clear,
     um,
     dois,
@@ -51,8 +51,8 @@ def main():
     parans = input()
 
     if parans == "exit":
-        global continuar
         clear()
+        global continuar
         continuar = False
     elif parans.isnumeric():
         parans = int(parans)
@@ -116,8 +116,7 @@ def parar():
 
     global continuar
 
-    if continuar == True:
-
+    if continuar:
         print("Você deseja fazer outro exercício\nA) Sim\nB) Não")
         x = input("Sua resposta: ")
 

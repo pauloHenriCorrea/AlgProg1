@@ -1,5 +1,7 @@
 import os
 
+# return é uma
+
 
 ####################################################################################################
 def clear():
@@ -561,28 +563,62 @@ def vinte():
 
         i = 0
 
-        menorDiv = 1
-        maiorDiv = 0
+        maiorDiv = 1
 
         if a < b:
-            i += a
+            i = a
         else:
-            i += b
+            i = b
 
-        while i > menorDiv:
+        while i > 1:
             if a % i == 0 and b % i == 0:
-                maiorDiv += i
+                maiorDiv = i
                 if maiorDiv != 0:
                     i = 0
             i -= 1
-        print(maiorDiv)
+        return maiorDiv
 
     mdc()
+
+    def B():
+        parada = False
+        while not parada:
+            N = int(input())
+
+            mdc()
+            if N == 0:
+                parada = True
+
+    B()
 
 
 ####################################################################################################
 def vinte_e_um():
-    print()
+    def soma_digitos(numero):
+
+        nun_str = str(numero)
+        soma = 0
+
+        i = 0
+        while i < len(nun_str):
+            soma += int(nun_str[i])
+            i += 1
+        return soma
+
+    A = input()
+    B = input()
+
+    global permutacao
+
+    permutacao = True
+
+    if len(A) != len(B) or soma_digitos(A) != soma_digitos(B):
+        permutacao = False
+
+    if permutacao:
+        print("Permutação")
+    else:
+        print("Não é permutação")
 
 
 ####################################################################################################
@@ -605,7 +641,7 @@ def palindromo():
     while i < j - i and pali:
         if char[i] != char[j - i]:
             pali = False
-        
+
         i = i + 1
 
     if pali:

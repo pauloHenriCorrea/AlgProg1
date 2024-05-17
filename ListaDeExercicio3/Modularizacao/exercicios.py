@@ -1,7 +1,5 @@
 import os
 
-# return é uma
-
 
 ####################################################################################################
 def clear():
@@ -555,39 +553,45 @@ def dezenove():
 
 ####################################################################################################
 def vinte():
-    def mdc():
-        a = int(input())
-        b = int(input())
+    N1 = int(input())
+    N2 = int(input())
 
-        i = 0
+    global mdcAntigo
 
+    def A(N1, N2):
         maiorDiv = 1
-
-        if a < b:
-            i = a
+        i = 0
+        if N1 < N2:
+            i = N1
         else:
-            i = b
+            i = N2
 
         while i > 1:
-            if a % i == 0 and b % i == 0:
+            if N1 % i == 0 and N2 % i == 0:
                 maiorDiv = i
                 if maiorDiv != 0:
                     i = 0
             i -= 1
         return maiorDiv
 
-    mdc()
+    mdcAntigo = A(N1, N2)
+    print(mdcAntigo)
 
-    def B():
-        parada = False
-        while not parada:
-            N = int(input())
+    def B(N):
+        mdcNovo = A(N, mdcAntigo)
+        return mdcNovo
 
-            mdc()
-            if N == 0:
-                parada = True
+    continuar = True
+    while continuar:
+        N = int(input())
 
-    B()
+        if N == 0:
+            continuar = False
+
+        mdc = B(N)
+        print(mdc)
+
+        mdcAntigo = mdc
 
 
 ####################################################################################################
@@ -629,6 +633,7 @@ def vinte_e_tres():
     print()
 
 
+####################################################################################################
 def palindromo():
     char = input()
 

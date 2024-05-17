@@ -1,4 +1,4 @@
-from Modularizacao.exercicios import (
+from exercicios import (
     clear,
     um,
     dois,

@@ -7,7 +7,7 @@ def clear():
 
 
 ####################################################################################################
-def um():
+def one():
     print(
         "1) O programa recebe um número inteiro positivo N, soma os N primeiros inteiros positivos, e mostra o resultado na tela.\n"
     )
@@ -40,7 +40,7 @@ def um():
 
 
 ####################################################################################################
-def dois():
+def two():
     print(
         "2) O programa recebe um número inteiro positivo N, e imprime os N primeiros números ímpares.\n"
     )
@@ -68,7 +68,7 @@ def dois():
 
 
 ####################################################################################################
-def tres():
+def three():
     print(
         "3) O programa recebe um número inteiro positivo N, e imprime o fatorial desse número.\n"
     )
@@ -98,7 +98,7 @@ def tres():
 
 
 ####################################################################################################
-def quatro():
+def four():
     print(
         "4) O programa recebe um número inteiro positivo N, e imprima as N primeiras potências de 2\n"
     )
@@ -121,7 +121,7 @@ def quatro():
 
 
 ####################################################################################################
-def cinco():
+def five():
     print(
         "5) O programa recebe um número inteiro positivo N, e soma a sequência dos N primeiros números inseridos\n"
     )
@@ -155,7 +155,7 @@ def cinco():
 
     if N == 0:
         print("\n Por favor, insira um número maior que 0\n ")
-        cinco()
+        five()
     elif N == 1:
         print("Você inseriu 1 número")
         print("A soma é: 1")
@@ -166,7 +166,7 @@ def cinco():
 
 
 ####################################################################################################
-def seis():
+def six():
     print(
         "O programa recebe um número inteiro positivo N, e cálcula qual é a soma dos N números positivos que foram inseridos."
     )
@@ -194,7 +194,7 @@ def seis():
 
 
 ####################################################################################################
-def sete():
+def seven():
     print(
         "O programa recebe um número inteiro positivo N, e fazer a soma dos números pares e dos números ímpares"
     )
@@ -216,7 +216,7 @@ def sete():
 
 
 ####################################################################################################
-def oito():
+def eight():
     print("Insira a quais foram as temperas médias nesta semana")
     i = 1
 
@@ -245,7 +245,7 @@ def oito():
 
 
 ####################################################################################################
-def nove():
+def nine():
     print(
         "\nO programa recebe um número inteiro positivo N, logo após receba a sequência de N números interios, e imprima quantos são positivos e quantps são não-positivos"
     )
@@ -311,7 +311,7 @@ def nove():
 
 
 ####################################################################################################
-def dez():
+def ten():
     print(
         "O programa recebe um N (talque N > 0) inteiro, e uma sequência de números inteiros positivos"
     )
@@ -336,7 +336,7 @@ def dez():
 
 
 ####################################################################################################
-def onze():
+def eleven():
     i = 1
     dia = 0
     maior = 0
@@ -367,7 +367,7 @@ def onze():
 
 
 ####################################################################################################
-def doze():
+def twelven():
     N = int(input())
 
     i = 0
@@ -389,7 +389,7 @@ def doze():
 
 
 ####################################################################################################
-def treze():
+def thirteen():
     N = int(input())
 
     i = 0
@@ -415,7 +415,7 @@ def treze():
 
 
 ####################################################################################################
-def quatorze():
+def fourteen():
     N = int(input())
 
     iguais = ""
@@ -442,7 +442,7 @@ def quatorze():
 
 
 ####################################################################################################
-def quinze():
+def fifteen():
     N = int(input())
 
     i = 0
@@ -461,7 +461,7 @@ def quinze():
 
 
 ####################################################################################################
-def dezesseis():
+def sixteen():
     N = int(input())
     i = int(input())
     j = int(input())
@@ -476,7 +476,7 @@ def dezesseis():
 
 
 ####################################################################################################
-def dezessete():
+def seventeen():
     N = int(input())
 
     i = 0
@@ -500,7 +500,7 @@ def dezessete():
 
 
 ####################################################################################################
-def dezoito():
+def eighteen():
     N = int(input())
 
     i = 0
@@ -535,7 +535,7 @@ def dezoito():
 
 
 ####################################################################################################
-def dezenove():
+def nineteen():
     N = int(input())
 
     i = 0
@@ -552,7 +552,7 @@ def dezenove():
 
 
 ####################################################################################################
-def vinte():
+def twenty():
     N1 = int(input())
     N2 = int(input())
 
@@ -595,7 +595,7 @@ def vinte():
 
 
 ####################################################################################################
-def vinte_e_um():
+def twenty_one():
     def soma_digitos(numero):
 
         nun_str = str(numero)
@@ -624,17 +624,17 @@ def vinte_e_um():
 
 
 ####################################################################################################
-def vinte_e_dois():
+def twenty_two():
     print()
 
 
 ####################################################################################################
-def vinte_e_tres():
+def twenty_three():
     print()
 
 
 ####################################################################################################
-def palindromo():
+def twenty_four():
     char = input()
 
     i = 0

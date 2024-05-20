@@ -1,29 +1,29 @@
 from exercicios import (
     # clear,
-    um,
-    dois,
-    tres,
-    quatro,
-    cinco,
-    seis,
-    sete,
-    oito,
-    nove,
-    dez,
-    onze,
-    doze,
-    treze,
-    quatorze,
-    quinze,
-    dezesseis,
-    dezessete,
-    dezoito,
-    dezenove,
-    vinte,
-    vinte_e_um,
-    vinte_e_dois,
-    vinte_e_tres,
-    palindromo,
+    one,
+    two,
+    three,
+    four,
+    five,
+    six,
+    seven,
+    eight,
+    nine,
+    ten,
+    eleven,
+    twelven,
+    thirteen,
+    fourteen,
+    fifteen,
+    sixteen,
+    seventeen,
+    eighteen,
+    nineteen,
+    twenty,
+    twenty_one,
+    twenty_two,
+    twenty_three,
+    twenty_four,
 )
 
 
@@ -34,53 +34,53 @@ def opitions(option):
     if option >= 1 and option <= 24:
         # clear()
         if option == 1:
-            um()
+            one()
         elif option == 2:
-            dois()
+            two()
         elif option == 3:
-            tres()
+            three()
         elif option == 4:
-            quatro()
+            four()
         elif option == 5:
-            cinco()
+            five()
         elif option == 6:
-            seis()
+            six()
         elif option == 7:
-            sete()
+            seven()
         elif option == 8:
-            oito()
+            eight()
         elif option == 9:
-            nove()
+            nine()
         elif option == 10:
-            dez()
+            ten()
         elif option == 11:
-            onze()
+            eleven()
         elif option == 12:
-            doze()
+            twelven()
         elif option == 13:
-            treze()
+            thirteen()
         elif option == 14:
-            quatorze()
+            fourteen()
         elif option == 15:
-            quinze()
+            fifteen()
         elif option == 16:
-            dezesseis()
+            sixteen()
         elif option == 17:
-            dezessete()
+            seventeen()
         elif option == 18:
-            dezoito()
+            eighteen()
         elif option == 19:
-            dezenove()
+            nineteen()
         elif option == 20:
-            vinte()
+            twenty()
         elif option == 21:
-            vinte_e_um()
+            twenty_one()
         elif option == 22:
-            vinte_e_dois()
+            twenty_two()
         elif option == 23:
-            vinte_e_tres()
+            twenty_three()
         elif option == 24:
-            palindromo()
+            twenty_four()
     else:
         check_entry()
 

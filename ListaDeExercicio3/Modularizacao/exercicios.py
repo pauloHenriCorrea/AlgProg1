@@ -14,7 +14,7 @@ def um():
     print("\nInsira um número inteiro, talque N > 0")
 
     N = int(input())
-    clear()
+    # clear()
     i = 1
 
     mais = " + "
@@ -47,7 +47,7 @@ def dois():
     print("\nInsira um número inteiro, talque N > 0")
 
     N = int(input())
-    clear()
+    # clear()
 
     i = 1
     virgula = ", "
@@ -75,7 +75,7 @@ def tres():
     print("\nInsira um número inteiro, talque N > 0")
 
     N = int(input())
-    clear()
+    # clear()
 
     n = N
 
@@ -105,7 +105,7 @@ def quatro():
     print("\nInsira um número inteiro, talque N > 0")
 
     N = int(input())
-    clear()
+    # clear()
 
     i = 0
 
@@ -126,7 +126,7 @@ def cinco():
         "5) O programa recebe um número inteiro positivo N, e soma a sequência dos N primeiros números inseridos\n"
     )
     N = int(input())
-    clear()
+    # clear()
 
     i = 0
 
@@ -168,7 +168,7 @@ def cinco():
 ####################################################################################################
 def seis():
     print(
-        "O programa recebe um número inteiro positivo N, e calcular qual é a soma dos números positivos que foram inseridos."
+        "O programa recebe um número inteiro positivo N, e cálcula qual é a soma dos N números positivos que foram inseridos."
     )
     N = int(input())
 
@@ -188,7 +188,7 @@ def seis():
             concat += str(x) + sinal
         i += 1
 
-    clear()
+    # clear()
     print("A soma é: " + concat)
     print("O resultado dessa soma é: " + str(soma) + "\n")
 
@@ -229,7 +229,7 @@ def oito():
             abaixo += 1
         i += 1
 
-    clear()
+    # clear()
 
     if abaixo == 0:
         print("Nenhum dia da semana a temperatura foi abaixo de 0")
@@ -251,7 +251,7 @@ def nove():
     )
     print("Um número é não-positivo se é negativo ou se é igual a 0 (zero)\n")
     N = int(input())
-    clear()
+    # clear()
 
     i = 0
 
@@ -281,7 +281,7 @@ def nove():
             notPositive += 1
         i += 1
 
-    clear()
+    # clear()
     print("\n")
     if N == 1 and N != 0:
         print("Você desejava inserir " + str(N) + " número")
@@ -433,7 +433,7 @@ def quatorze():
         ultimoDigito = proximoDigito
         N = N // 10
 
-    clear()
+    # clear()
     print("O número informado foi: " + str(N))
     if encontrei:
         print("Sim")

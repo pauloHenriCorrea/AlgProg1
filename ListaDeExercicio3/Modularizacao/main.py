@@ -1,5 +1,5 @@
 from exercicios import (
-    clear,
+    # clear,
     um,
     dois,
     tres,
@@ -27,15 +27,75 @@ from exercicios import (
 )
 
 
-continuar = True
+##################################################################################################################################
+# Define quais são os exercícios disponíveis
+def opitions(option):
+    option = int(option)
+    if option >= 1 and option <= 24:
+        # clear()
+        if option == 1:
+            um()
+        elif option == 2:
+            dois()
+        elif option == 3:
+            tres()
+        elif option == 4:
+            quatro()
+        elif option == 5:
+            cinco()
+        elif option == 6:
+            seis()
+        elif option == 7:
+            sete()
+        elif option == 8:
+            oito()
+        elif option == 9:
+            nove()
+        elif option == 10:
+            dez()
+        elif option == 11:
+            onze()
+        elif option == 12:
+            doze()
+        elif option == 13:
+            treze()
+        elif option == 14:
+            quatorze()
+        elif option == 15:
+            quinze()
+        elif option == 16:
+            dezesseis()
+        elif option == 17:
+            dezessete()
+        elif option == 18:
+            dezoito()
+        elif option == 19:
+            dezenove()
+        elif option == 20:
+            vinte()
+        elif option == 21:
+            vinte_e_um()
+        elif option == 22:
+            vinte_e_dois()
+        elif option == 23:
+            vinte_e_tres()
+        elif option == 24:
+            palindromo()
+    else:
+        check_entry()
 
 
+##################################################################################################################################
+# Talvez use mais para frente
+def check_entry():
+    # clear()
+    print("Por favor escolha um número de exercício de 1 a 24")
+    main()
+
+
+##################################################################################################################################
 def main():
-
-    def verificarEntrada():
-        clear()
-        print("Por favor escolha um número de exercício de 1 a 23")
-        main()
+    c = True
 
     print(
         "_____________________________________________________________________________________________________"
@@ -51,90 +111,41 @@ def main():
     parans = input()
 
     if parans == "exit":
-        clear()
-        global continuar
-        continuar = False
-    elif parans.isnumeric():
-        parans = int(parans)
-        if parans >= 1 and parans <= 24:
-            clear()
-            if parans == 1:
-                um()
-            elif parans == 2:
-                dois()
-            elif parans == 3:
-                tres()
-            elif parans == 4:
-                quatro()
-            elif parans == 5:
-                cinco()
-            elif parans == 6:
-                seis()
-            elif parans == 7:
-                sete()
-            elif parans == 8:
-                oito()
-            elif parans == 9:
-                nove()
-            elif parans == 10:
-                dez()
-            elif parans == 11:
-                onze()
-            elif parans == 12:
-                doze()
-            elif parans == 13:
-                treze()
-            elif parans == 14:
-                quatorze()
-            elif parans == 15:
-                quinze()
-            elif parans == 16:
-                dezesseis()
-            elif parans == 17:
-                dezessete()
-            elif parans == 18:
-                dezoito()
-            elif parans == 19:
-                dezenove()
-            elif parans == 20:
-                vinte()
-            elif parans == 21:
-                vinte_e_um()
-            elif parans == 22:
-                vinte_e_dois()
-            elif parans == 23:
-                vinte_e_tres()
-            elif parans == 24:
-                palindromo()
-        else:
-            verificarEntrada()
-    else:
-        verificarEntrada()
+        # clear()
+        c = False
+        proceed(c)
+    elif parans.isnumeric(): opitions(parans)
+    else: check_entry()
 
 
-def parar():
-
-    global continuar
-
-    if continuar:
+##################################################################################################################################
+def proceed(c):
+    if c:
         print("Você deseja fazer outro exercício\nA) Sim\nB) Não")
-        x = input("Sua resposta: ")
+        choose_user = input("Sua resposta: ")
 
-        if x.upper() == "A" or x.upper() == "B":
-            if x.upper() == "A":
-                clear()
+        if choose_user.upper() == "A" or choose_user.upper() == "B":
+            if choose_user.upper() == "A":
+                # clear()
+                print("")
             else:
-                clear()
+                # clear()
                 print("Obrigado por usar nosso programa!")
-                continuar = False
+                c = False
         else:
-            clear()
+            # clear()
             print("A sua resposta deve ser A ou B")
-            parar()
+            proceed(c)
     else:
+        # clear()
         print("Obrigado por usar nosso programa!")
+    return c
 
 
-while continuar:
+restart = True  # variável de controle do laço
+
+while restart:
     main()
-    parar()
+    proceed(restart)
+    if not proceed(restart):
+        restart = False

@@ -1,5 +1,5 @@
 from exercicios import (
-    # clear,
+    clear,
     one,
     two,
     three,
@@ -28,11 +28,39 @@ from exercicios import (
 
 
 ##################################################################################################################################
+def main():
+    c = True
+
+    print(
+        "_____________________________________________________________________________________________________"
+    )
+    print(
+        "\n\n     Informe abaixo, qual exercício você deseja executar ou digite exit para encerrar o programa\n"
+    )
+    print(
+        "_____________________________________________________________________________________________________\n"
+    )
+
+    # Variável utilizada para pegar o número do exercício que o usuário quer
+    parans = input()
+
+    if parans == "exit":
+        clear()
+        c = False
+        proceed(c)
+    elif parans.isnumeric():
+        opitions(parans)
+    else:
+        check_entry()
+    return c
+
+
+##################################################################################################################################
 # Define quais são os exercícios disponíveis
 def opitions(option):
     option = int(option)
     if option >= 1 and option <= 24:
-        # clear()
+        clear()
         if option == 1:
             one()
         elif option == 2:
@@ -88,34 +116,9 @@ def opitions(option):
 ##################################################################################################################################
 # Talvez use mais para frente
 def check_entry():
-    # clear()
+    clear()
     print("Por favor escolha um número de exercício de 1 a 24")
     main()
-
-
-##################################################################################################################################
-def main():
-    c = True
-
-    print(
-        "_____________________________________________________________________________________________________"
-    )
-    print(
-        "\n\n     Informe abaixo, qual exercício você deseja executar ou digite exit para encerrar o programa\n"
-    )
-    print(
-        "_____________________________________________________________________________________________________\n"
-    )
-
-    # Variável utilizada para pegar o número do exercício que o usuário quer
-    parans = input()
-
-    if parans == "exit":
-        # clear()
-        c = False
-        proceed(c)
-    elif parans.isnumeric(): opitions(parans)
-    else: check_entry()
 
 
 ##################################################################################################################################
@@ -126,18 +129,18 @@ def proceed(c):
 
         if choose_user.upper() == "A" or choose_user.upper() == "B":
             if choose_user.upper() == "A":
-                # clear()
+                clear()
                 print("")
             else:
-                # clear()
+                clear()
                 print("Obrigado por usar nosso programa!")
                 c = False
         else:
-            # clear()
+            clear()
             print("A sua resposta deve ser A ou B")
             proceed(c)
     else:
-        # clear()
+        clear()
         print("Obrigado por usar nosso programa!")
     return c
 
@@ -145,7 +148,8 @@ def proceed(c):
 restart = True  # variável de controle do laço
 
 while restart:
-    main()
-    proceed(restart)
-    if not proceed(restart):
+    if main():
+        if not proceed(restart):
+            restart = False
+    else:
         restart = False

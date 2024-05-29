@@ -14,7 +14,7 @@ def one():
     print("\nInsira um número inteiro, talque N > 0")
 
     N = int(input())
-    # clear()
+    clear()
     i = 1
 
     mais = " + "
@@ -47,20 +47,22 @@ def two():
     print("\nInsira um número inteiro, talque N > 0")
 
     N = int(input())
-    # clear()
+    clear()
 
     i = 1
     virgula = ", "
-    impares = str(i) + virgula
+    impares = str(i)
 
     while i <= N * 2:
-        if i % 2 != 0 and i != 1:
-            impares += str(i) + virgula
 
-        if i == N * 2 - 4:
+        if i == N * 2 - 1:
             virgula = " e "
-        if i > N * 2 - 3:
+        elif i == N * 2:
             virgula = ""
+        else:
+            virgula = ", "
+        if i % 2 != 0 and i != 1:
+            impares += virgula + str(i)
         i += 1
 
     print("Número informado foi: " + str(N))
@@ -75,7 +77,7 @@ def three():
     print("\nInsira um número inteiro, talque N > 0")
 
     N = int(input())
-    # clear()
+    clear()
 
     n = N
 
@@ -105,7 +107,7 @@ def four():
     print("\nInsira um número inteiro, talque N > 0")
 
     N = int(input())
-    # clear()
+    clear()
 
     i = 0
 
@@ -126,14 +128,13 @@ def five():
         "5) O programa recebe um número inteiro positivo N, e soma a sequência dos N primeiros números inseridos\n"
     )
     N = int(input())
-    # clear()
+    clear()
 
     i = 0
 
     soma = 0
     conct = ""
     sinal = " + "
-
     while i < N:
         x = int(input())
 
@@ -188,7 +189,7 @@ def six():
             concat += str(x) + sinal
         i += 1
 
-    # clear()
+    clear()
     print("A soma é: " + concat)
     print("O resultado dessa soma é: " + str(soma) + "\n")
 
@@ -229,7 +230,7 @@ def eight():
             abaixo += 1
         i += 1
 
-    # clear()
+    clear()
 
     if abaixo == 0:
         print("Nenhum dia da semana a temperatura foi abaixo de 0")
@@ -251,7 +252,7 @@ def nine():
     )
     print("Um número é não-positivo se é negativo ou se é igual a 0 (zero)\n")
     N = int(input())
-    # clear()
+    clear()
 
     i = 0
 
@@ -281,7 +282,7 @@ def nine():
             notPositive += 1
         i += 1
 
-    # clear()
+    clear()
     print("\n")
     if N == 1 and N != 0:
         print("Você desejava inserir " + str(N) + " número")
@@ -433,7 +434,7 @@ def fourteen():
         ultimoDigito = proximoDigito
         N = N // 10
 
-    # clear()
+    clear()
     print("O número informado foi: " + str(N))
     if encontrei:
         print("Sim")
@@ -466,8 +467,11 @@ def sixteen():
     i = int(input())
     j = int(input())
 
+    # clear()
+
     contador = 0  # Está variável serva para armazenar a quantidade de números que são multiplo de i ou j
     passo = 0
+
     while contador < N:
         if passo % i == 0 or passo % j == 0:
             print(passo)
@@ -553,14 +557,13 @@ def nineteen():
 
 ####################################################################################################
 def twenty():
-    N1 = int(input())
-    N2 = int(input())
-
-    global mdcAntigo
+    print("Informe se você deseja fazer o exercício A ou B:")
+    chose_user = input()
 
     def A(N1, N2):
-        maiorDiv = 1
+        mdc = 1
         i = 0
+
         if N1 < N2:
             i = N1
         else:
@@ -568,54 +571,85 @@ def twenty():
 
         while i > 1:
             if N1 % i == 0 and N2 % i == 0:
-                maiorDiv = i
-                if maiorDiv != 0:
+                mdc = i
+                if mdc != 0:
                     i = 0
             i -= 1
-        return maiorDiv
+        return mdc
 
-    mdcAntigo = A(N1, N2)
-    print(mdcAntigo)
-
-    def B(N):
+    def B(N, mdcAntigo):
         mdcNovo = A(N, mdcAntigo)
         return mdcNovo
 
-    continuar = True
-    while continuar:
-        N = int(input())
+    mdc = 0
+    N1 = int(input("Informe N1: "))
+    N2 = int(input("Informe N2: "))
 
-        if N == 0:
-            continuar = False
+    if chose_user.upper() == "A":
+        mdc = A(N1, N2)
+        print("O mdc de " + str(N1) + " e " + str(N2) + " é de: " + str(mdc))
+    elif chose_user.upper() == "B":
+        mdcAntigo = A(N1, N2)
 
-        mdc = B(N)
-        print(mdc)
+        continuar = True
 
-        mdcAntigo = mdc
+        while continuar:
+            N = int(input("Informe o valorde de N: "))
+
+            if N == 0:
+                continuar = False
+            mdcLaco = B(N, mdcAntigo)
+            print(str(mdcLaco) + "\n")
+            mdcAntigo = mdcLaco
+    else:
+        print("Escolha o exercício A ou B")
 
 
 ####################################################################################################
 def twenty_one():
-    def soma_digitos(numero):
+    chose_user = input()
 
+    def soma_digitos(numero):
         nun_str = str(numero)
-        soma = 0
+        sum = 0
 
         i = 0
         while i < len(nun_str):
-            soma += int(nun_str[i])
+            sum += int(nun_str[i])
             i += 1
-        return soma
+        return sum
 
-    A = input()
-    B = input()
+    def A(n, d):
+        num = int(n)
 
-    global permutacao
+        n_digitos = 0
+        ultimo = num % 10
+
+        while num != 0:
+            if d == ultimo:
+                n_digitos += 1
+            num = num // 10
+            ultimo = num % 10
+        return n_digitos
+
+    def B(n1, n2):
+        permutacao = True
+
+        if len(n1) != len(n2) or soma_digitos(n1) != soma_digitos(n2):
+            permutacao = False
+        return permutacao
 
     permutacao = True
+    if chose_user.upper() == "A":
+        n = int(input())
+        digito = int(input())
+        quantidade_digitos = A(n, digito)
+        print(quantidade_digitos)
+    elif chose_user.upper() == "B":
 
-    if len(A) != len(B) or soma_digitos(A) != soma_digitos(B):
-        permutacao = False
+        caracter1 = input()
+        caracter2 = input()
+        permutacao = B(caracter1, caracter2)
 
     if permutacao:
         print("Permutação")
@@ -625,7 +659,23 @@ def twenty_one():
 
 ####################################################################################################
 def twenty_two():
-    print()
+    def comprimento(n):
+        i = 1
+        while n != 1:
+            i += 1
+            if n % 2 == 0:
+                n = n / 2
+            else:
+                n = n * 3 + 1
+        return i
+
+    N = int(input())
+    i = 0
+    
+    while i < N:
+        k = int(input())
+        print(comprimento(k))
+        i += 1
 
 
 ####################################################################################################

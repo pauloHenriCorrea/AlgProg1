@@ -22,3 +22,7 @@ def fibonorial(n):
         produto *= fib(i)
         i += 1
     return produto
+
+# C
+N = int(input())
+# 1 1 2 3 5 8

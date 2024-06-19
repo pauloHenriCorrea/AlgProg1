@@ -29,16 +29,3 @@ while i < n:
     numeros[valores[i]] += 1
     i += 1
 print(numeros)
-
-
-vetor = []
-
-# Quantidade de números que o usuário que inserir
-N = int(input())
-
-i = 0
-
-while i < N:
-    numero = int(input())
-    vetor.append(numero)
-    print(end="0")

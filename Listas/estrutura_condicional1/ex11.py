@@ -1,8 +1,3 @@
-"""
-Faça um programa que recebe o preço de um produto, calcula e mostra, de acordo
-com as tabelas a seguir, o novo preço e a classificação.
-"""
-
 # Entrada de dados
 productPrice = float(input("Informe o preço do produto: "))
 
@@ -27,7 +22,7 @@ else:
     )  # * 0.15 equivale aos 15% de aumento no preço do produto
     newPrice = productPrice + ProductWith15percentIncrease
 
-    # * Calculando a classificação do novo preço do produto, para saber se está barato, normal, caro ou muito caro
+# * Calculando a classificação do novo preço do produto, para saber se está barato, normal, caro ou muito caro e retornando para o usuário
 if newPrice <= 80:
     print("Barato!")
 elif newPrice <= 120:

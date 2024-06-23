@@ -1,10 +1,3 @@
-"""
-Uma empresa decide dar um aumento de 30% aos funcionários com salários
-inferiores a R$ 500,00. Faça um programa que recebe o salário do funcionário e
-mostra o valor do salário reajustado ou uma mensagem, caso o funcionário não
-tenha direito ao aumento.
-"""
-
 # Emtrada de dados
 employeeSalary = float(input("Informe seu salário: "))
 

@@ -1,17 +1,4 @@
-""" 
-Leia três números com casas decimais (A, B e C) representando os lados de um
-triângulo e organize esses lados em ordem decrescente, de tal maneira que A
-contenha o maior dos três lados. Logo após, determine o tipo do triângulo que
-esses lados formam, baseado nos seguintes casos:
-
-• Se A > B + C, escreva a mensagem: não forma triângulo;
-• Se A² = B² + C², escreva a mensagem: triângulo retângulo;
-• Se A² > B² + C², escreva a mensagem: triângulo obtusângulo;
-• Se A² < B² + C², escreva a mensagem: triângulo acutângulo;
-• Se os três lados são iguais, escreva a mensagem: triângulo equilátero;
-• Se dois dos três lados são iguais, escreva a mensagem: triângulo isósceles
-"""
-
+# Entrada de dados
 A = float(input("Informe o valor de A: "))
 B = float(input("Informe o valor de B: "))
 C = float(input("Informe o valor de C: "))
@@ -33,8 +20,8 @@ if B < C:
     # * B = C
     # * C = aux
 
-A_Quadrado = A**2
-BCQuadrado = B**2 + C**2
+A_square = A**2
+B_C_square = B**2 + C**2
 # * Se A > B + C, escreva a mensagem: não forma triângulo
 
 # * Entrada: 9 4 3
@@ -43,17 +30,17 @@ if A >= B + C:
 else:
     # * Se A² = B² + C², escreva a mensagem: triângulo retângulo
     # * Entrada: 5 4 3
-    if A_Quadrado == BCQuadrado:
+    if A_square == B_C_square:
         print("Triângulo retangulo")
 
     # * Se A² > B² + C², escreva a mensagem: triângulo obtusângulo
     # * Entrada 6 4 3
-    elif A_Quadrado > BCQuadrado:
+    elif A_square > B_C_square:
         print("Triângulo obtusângulo")
 
     # * Se A² < B² + C², escreva a mensagem: triângulo acutângulo
     # * Entrada 6 5 4
-    elif A_Quadrado < BCQuadrado:
+    elif A_square < B_C_square:
         print("Triângulo acutângulo")
 
     # * Se os três lados são iguais, escreva a mensagem: triângulo equilátero
@@ -67,5 +54,5 @@ else:
     elif A == B or B == C or A == C:
         print("Triângulo isósceles")
 
-
+# Saída de dados
 print(A, B, C)

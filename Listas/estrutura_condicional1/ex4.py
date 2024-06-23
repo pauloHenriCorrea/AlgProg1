@@ -1,14 +1,10 @@
-"""
-Escreva um programa que receba um número inteiro a e verifique se a é positivo,
-se a é negativo ou se a é igual a 0. Faça a simulação passo a passo da execução
-de sua solução.
-"""
+# Entrada de dados
+num = int(input("Informe um número inteiro: "))
 
-numero = int(input("Informe um número inteiro: "))
-
-if numero > 0:
+# Computação/Saída
+if num > 0:
     print("Positivo")
-elif numero < 0:
+elif num < 0:
     print("Negativo")
 else:
     print("Nulo")

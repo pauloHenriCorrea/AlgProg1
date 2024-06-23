@@ -1,8 +1,3 @@
-"""
-Faça um programa que recebe a idade e o peso de uma pessoa. De acordo com a
-tabela a seguir, verifique e mostre em qual grupo de risco essa pessoa se encaixa.
-"""
-
 # Entrada de dados
 age = int(input("\nInforme sua idade: "))
 weight = float(input("Informe seu peso em Kg: "))

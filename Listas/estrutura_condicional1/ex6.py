@@ -1,16 +1,7 @@
-"""
-Escreva um programa que receba dois tempos no formato hh : mm : ss (um
-tempo por linha), some os dois tempos e escreva o tempo resultante. Por exemplo, 
-para os tempos 03:10:32 e 04:55:40, você deve escrever na tela 08:06:12.
-Dica: para ler os tempos, você vai precisar utilizar input.split() de uma forma
-diferente da que usamos até agora, procure informações sobre a função split()
-do Python.
-"""
-
 # Entrada de dados
 print("Os tempos inseridos devem ser no formato: hh:mm:ss")
-tempo1 = input("Informe o primeiro tempo: ")
-tempo2 = input("Informe o segundo tempo: ")
+time1 = input("Informe o primeiro tempo: ")
+time2 = input("Informe o segundo tempo: ")
 
 
 # Computação
@@ -28,64 +19,63 @@ def mySplit(strings, separator):
     l.append(cursor)
     return l
 
+
 # * Convertando os valores inseridos do tipo str para uma lista de strings, str -> list[str]
-tempo1Lista = mySplit(tempo1, ":")
-tempo2Lista = mySplit(tempo2, ":")
+timeList1 = mySplit(time1, ":")
+timeList2 = mySplit(time2, ":")
 
 #! Observação: por padrão, as posições de uma lista ou vetor se iniciam na posição [0]
 
 # * Pegagando somente os valores da primeira posição tanto do tempo1 quanto do tempo 2
-posicao1Tempo1 = int(tempo1Lista[0])
-posicao1Tempo2 = int(tempo2Lista[0])
+position1time1 = int(timeList1[0])
+position1time2 = int(timeList2[0])
 
 # * Pegagando somente os valores da segunda posição tanto do tempo1 quanto do tempo 2
-posicao2Tempo1 = int(tempo1Lista[1])
-posicao2Tempo2 = int(tempo2Lista[1])
+position2time1 = int(timeList1[1])
+position2time2 = int(timeList2[1])
 
 # * Pegagando somente os valores da terceira posição tanto do tempo1 quanto do tempo 2
-posicao3Tempo1 = int(tempo1Lista[2])
-posicao3Tempo2 = int(tempo2Lista[2])
+position3time1 = int(timeList1[2])
+position3time2 = int(timeList2[2])
 
 # * Somando os valores das posições equivalentes
-somaDaPosicao1 = int(posicao1Tempo1 + posicao1Tempo2)
-somaDaPosicao2 = int(posicao2Tempo1 + posicao2Tempo2)
-somaDaPosicao3 = int(posicao3Tempo1 + posicao3Tempo2)
+sumPosition1 = int(position1time1 + position1time2)
+sumPosition2 = int(position2time1 + position2time2)
+sumPosition3 = int(position3time1 + position3time2)
 
 # * Verificando se as horas é maior ou igual a 23
-if somaDaPosicao1 > 23:
+if sumPosition1 > 23:
     # * Pegando somente o resto da divisão da somaDaPosicao1 / 24
-    somaDaPosicao1 %= 24
+    sumPosition1 %= 24
 
 # * Verificando se os minutos é maior que 60
-if somaDaPosicao2 > 60:
+if sumPosition2 > 60:
     # * Adicina a quantidade de minutos que passaram nas horas
-    somaDaPosicao1 += int(somaDaPosicao2 / 60)
+    sumPosition1 += int(sumPosition2 / 60)
     # * Pegando somente o resto da divisão da somaDaPosicao2 / 60
-    somaDaPosicao2 %= 60
+    sumPosition2 %= 60
 
 # * Verificando se os segundos é maior que 60
-if somaDaPosicao3 > 60:
+if sumPosition3 > 60:
     # * Adicina a quantidade de minutos que passaram nos segundos
-    somaDaPosicao2 += int(somaDaPosicao3 / 60)
+    sumPosition2 += int(sumPosition3 / 60)
     # * Pegando somente o resto da divisão da somaDaPosicao3 / 60
-    somaDaPosicao3 %= 60
+    sumPosition3 %= 60
 
 # * Formatando os dados para imprimir ele na tela
-if somaDaPosicao1 == 24:
-    somaDaPosicao1 = 0
+if sumPosition1 == 24:
+    sumPosition1 = 0
 
-if somaDaPosicao1 < 10:
-    somaDaPosicao1 = "0" + str(somaDaPosicao1)
+if sumPosition1 < 10:
+    sumPosition1 = "0" + str(sumPosition1)
 
-if somaDaPosicao2 < 10:
-    somaDaPosicao2 = "0" + str(somaDaPosicao2)
+if sumPosition2 < 10:
+    sumPosition2 = "0" + str(sumPosition2)
 
-if somaDaPosicao3 < 10:
-    somaDaPosicao3 = "0" + str(somaDaPosicao3)
+if sumPosition3 < 10:
+    sumPosition3 = "0" + str(sumPosition3)
 
-concatenacao = (
-    str(somaDaPosicao1) + ":" + str(somaDaPosicao2) + ":" + str(somaDaPosicao3)
-)
+concat = str(sumPosition1) + ":" + str(sumPosition2) + ":" + str(sumPosition3)
 
 # Saída de dados
-print(concatenacao)
+print(concat)

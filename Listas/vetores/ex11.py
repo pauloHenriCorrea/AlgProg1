@@ -32,8 +32,9 @@ l_ordenada = ordena(l)
 
 t = len(l_ordenada) - 1
 soma = l_ordenada[0] + l_ordenada[t]
-i = 0
 balanceada = True
+
+i = 0
 while i < len(l_ordenada):
     s = 0
     s = l_ordenada[i] + l_ordenada[t - i]

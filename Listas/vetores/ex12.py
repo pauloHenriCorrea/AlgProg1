@@ -4,6 +4,8 @@ dic = {}
 numeros = input().split()
 
 i = 0
+
+# Coloca 0 de acordo com o tamanho do vetor de números
 while i < len(numeros):
     atual = numeros[i]
     dic[atual] = 0

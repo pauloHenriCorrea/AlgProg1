@@ -17,6 +17,7 @@ numeros = list_nuns(N)
 menor = numeros[0]
 
 i = 0
+
 while i < len(numeros):
     if numeros[i] < menor:
         menor = numeros[i]

@@ -18,7 +18,6 @@ def ler_numeros(n):
 
 
 l_numeros = ler_numeros(N)
-print(l_numeros)
 
 i = 0
 while i < N:

@@ -13,7 +13,6 @@ while i < n:
 
     # Verifica se foram passadas a 6 possiveis alternativas
     if t_aluno == t:
-
         c = 0
         while c < t_aluno:
             if r_aluno[c] == gabarito[c]:

@@ -68,7 +68,7 @@ def register(route):
                 if not exist_CPF:
                     CPF_formated = format_CPF(another_CPF)
                     valid = True
-                    fp.write(CPF_formated + ";" + another_name + "\n")
+                    fp.write("{};{}\n".format(CPF_formated, another_name))
                     print("Aluno cadastrado com sucesso!")
 
                     print("\nDeseja cadrastrar outro aluno?\nSim - 1\nNão - 2")

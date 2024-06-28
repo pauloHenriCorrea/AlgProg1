@@ -1,4 +1,4 @@
-from students.index import student_options
+from routes.index import student_options, discipline_options
 import os
 
 """
@@ -25,12 +25,13 @@ print("\t3 - MATRICULAR ALUNO EM UMA DISCIPLINA")
 print("\t4 - CANCELAR MATRICULA DE UM ESTUDANTE")
 print("\t5 - RELATÓRIO\n")
 
-option = int(input())
+option = input()
 
+os.system("cls" if os.name == "nt" else "clear")
 match option:
-    case 1:
-        os.system("cls" if os.name == "nt" else "clear")
+    case "1":
         student_options()
-
+    case "2":
+        discipline_options()
     case default:
         print("A operação inserida é inválida")

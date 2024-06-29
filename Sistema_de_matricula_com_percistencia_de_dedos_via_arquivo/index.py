@@ -18,20 +18,38 @@ import os
     => 6 - Sair
 """
 
-print("\nINFORME QUAIS DAS OPERAÇÕES ABAIXO VOCÊ DESEJA REALIZAR:\n")
-print("\t1 - CADASTRAR, EDITAR, REMOVER OU LISTAR ALUNO")
-print("\t2 - CADASTRAR, EDITAR, REMOVER OU LISTAR DISCIPLINA")
-print("\t3 - MATRICULAR ALUNO EM UMA DISCIPLINA")
-print("\t4 - CANCELAR MATRICULA DE UM ESTUDANTE")
-print("\t5 - RELATÓRIO\n")
 
-option = input()
+def menu():
+    print("\nINFORME QUAIS DAS OPERAÇÕES ABAIXO VOCÊ DESEJA REALIZAR:\n")
+    print("\t1 - CADASTRAR, EDITAR, REMOVER OU LISTAR ALUNO")
+    print("\t2 - CADASTRAR, EDITAR, REMOVER OU LISTAR DISCIPLINA")
+    print("\t3 - MATRICULAR ALUNO EM UMA DISCIPLINA")
+    print("\t4 - CANCELAR MATRICULA DE UM ESTUDANTE")
+    print("\t5 - RELATÓRIO")
+    print("\t6 - SAIR\n")
 
-os.system("cls" if os.name == "nt" else "clear")
-match option:
-    case "1":
-        student_options()
-    case "2":
-        discipline_options()
-    case default:
-        print("A operação inserida é inválida")
+    option = input()
+
+    os.system("cls" if os.name == "nt" else "clear")
+    match option:
+        case "1":
+            student_options()
+        case "2":
+            discipline_options()
+        case "6":
+            return True
+        case default:
+            print(
+                "O NÚMERO INSERIDO NÃO CORRESPONDE A NENHUMA DAS OPERAÇÃO EXISTENTES."
+            )
+            print("POR FAVOR, DIGITE UM NÚMERO DE OPERAÇÃO VÁLIDO")
+
+
+def main():
+    stop = False
+    while not stop:
+        if menu():
+            stop = True
+
+
+main()

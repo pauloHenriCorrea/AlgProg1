@@ -32,15 +32,15 @@ def discipline_options():
     print("\t3 - REMOVER")
     print("\t4 - LISTAR")
 
-    option = int(input())
+    option = input()
 
     os.system("cls" if os.name == "nt" else "clear")
     match option:
-        case 1:
+        case "1":
             register("")
-        case 2:
+        case "2":
             edit("")
-        case 4:
+        case "4":
             to_list("")
         case default:
             print("A operação inserida é inválida")

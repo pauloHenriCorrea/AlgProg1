@@ -129,42 +129,69 @@ def register(route):
 ######################################## INICÍO DA EDIÇÃO ####################################################################
 def edit(route):
     if route == "student":
-        lines = to_take_lines("data/students.csv")
-        CPFs = add_CPFs_in_vetor(lines)
-
         CPF = input("INFORME O CPF DO ALUNO QUE DESEJA EDITAR: ")
         if len(CPF) == 11:
+
+            lines = to_take_lines("data/students.csv")
+            CPFs = add_CPFs_in_vetor(lines)
             CPF_formated = format_CPF(CPF)
             exist = check_CPF_or_dicipline_exists(CPFs, CPF_formated)
+
             if exist:
-                print("O QUE VOCÊ DESEJA EDITAR?\nNOME - 1\nCPF - 2")
+                os.system("cls" if os.name == "nt" else "clear")
+                print("O QUE VOCÊ DESEJA EDITAR?\nNOME - 1\nCPF - 2\nNOME E CPF - 3")
                 choise = input("SUA ESCOLHA: ")
 
                 vector = []  # Vetor que vai receber cada linha do dados_alunos.csv
+
+                os.system("cls" if os.name == "nt" else "clear")
                 match choise:
                     case "1":
+
                         new_name = input("INFORME O NOVO NOME: ")
 
                         # Para saber qual a posição que preciso editar
                         i = 0
                         while i < len(lines):
                             vector.append(lines[i].split(";"))
-                            if vector[i][0] == CPF:
-                                vector[i][1] = "{}\n".format(new_name)
+                            if vector[i][0] == CPF_formated:
+                                vector[i][1] = "{}\n".format(new_name.upper())
                             i += 1
+
                     case "2":
 
                         new_CPF = input("INFORME O NOVO CPF: ")
+                        new_CPF_formated = format_CPF(new_CPF)
+
                         CPFs = add_CPFs_in_vetor(lines)
-                        exist = check_CPF_or_dicipline_exists(CPFs, new_CPF)
+
+                        exist = check_CPF_or_dicipline_exists(CPFs, new_CPF_formated)
 
                         if not exist:
                             i = 0
                             while i < len(lines):
                                 vector.append(lines[i].split(";"))
-                                if vector[i][0] == CPF:
-                                    vector[i][0] = new_CPF
+                                if vector[i][0] == CPF_formated:
+                                    vector[i][0] = new_CPF_formated
                                 i += 1
+                    case "3":
+                        new_CPF = input("INFORME O NOVO CPF: ")
+                        new_name = input("INFORME O NOVO NOME: ")
+
+                        new_CPF_formated = format_CPF(new_CPF)
+
+                        CPFs = add_CPFs_in_vetor(lines)
+
+                        exist = check_CPF_or_dicipline_exists(CPFs, new_CPF_formated)
+                        if not exist:
+                            i = 0
+                            while i < len(lines):
+                                vector.append(lines[i].split(";"))
+                                if vector[i][0] == CPF_formated:
+                                    vector[i][0] = new_CPF_formated
+                                    vector[i][1] = "{}\n".format(new_name.upper())
+                                i += 1
+
                 fp = open("data/students.csv", "w")
                 i = 0
                 while i < len(vector):
@@ -175,12 +202,10 @@ def edit(route):
                 print(
                     "O CPF INFORMADO NÃO EXISTE OU É INVÁLIDO! POR FAVOR, INFORME NOVAMENTE O CPF."
                 )
-            edit("student")
         else:
             print(
                 "O CPF INFORMADO NÃO EXISTE OU É INVÁLIDO! POR FAVOR, INFORME NOVAMENTE O CPF."
             )
-            edit("student")
     else:
         lines = to_take_lines("data/diciplines.csv")
         name_dicipline = input("INFORME O NOME DA DISCIPLINA QUE DESEJA EDITAR: ")
@@ -197,7 +222,6 @@ def edit(route):
             fp.write("{}\n".format(lines[i]))
             i += 1
         fp.close()
-    return
 
 
 ######################################## FIM DA EDIÇÃO #######################################################################

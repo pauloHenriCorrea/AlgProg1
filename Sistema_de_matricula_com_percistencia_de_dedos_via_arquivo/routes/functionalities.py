@@ -242,13 +242,13 @@ def remove(route):
 ######################################## INICÍO DA LISTAGEM ###################################################################
 def to_list(route):
     if route == "student":
-        linhas = to_take_lines("data/students.csv")
+        lines = to_take_lines("data/students.csv")
 
-        i = 0
         data = []
+        i = 0
         students_data = []
-        while i < len(linhas):
-            data.append(linhas[i].split("\n"))
+        while i < len(lines):
+            data.append(lines[i].split("\n"))
             students_data.append(data[i][0].split(";"))
             i += 1
 
@@ -259,7 +259,13 @@ def to_list(route):
             print("\tCPF: {}".format(students_data[i][0]))
             i += 1
     else:
-        print("Estou na rota da disciplina")
+        lines = to_take_lines("data/diciplines.csv")
+
+        i = 0
+        while i < len(lines):
+            print("DISCIPLINA {}: {}".format(i + 1, lines[i]))
+            i += 1
+
     return
 
 

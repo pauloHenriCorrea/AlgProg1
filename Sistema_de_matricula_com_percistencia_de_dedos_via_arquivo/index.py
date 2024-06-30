@@ -34,7 +34,7 @@ def menu():
 
     option = input()
 
-    os.system("cls" if os.name == "nt" else "clear")
+    # os.system("cls" if os.name == "nt" else "clear")
     match option:
         case "1":
             student_options()

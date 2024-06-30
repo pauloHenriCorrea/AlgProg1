@@ -1,4 +1,8 @@
-from routes.index import student_options, discipline_options
+from routes.index import (
+    student_options,
+    discipline_options,
+    enroll_student_in_a_subject,
+)
 import os
 
 """
@@ -36,6 +40,8 @@ def menu():
             student_options()
         case "2":
             discipline_options()
+        case "3":
+            enroll_student_in_a_subject()
         case "6":
             return True
         case default:

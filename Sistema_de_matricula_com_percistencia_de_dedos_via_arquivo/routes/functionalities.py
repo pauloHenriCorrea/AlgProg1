@@ -1,4 +1,9 @@
-from components.index import to_take_lines, add_CPFs_in_vetor
+from components.index import (
+    to_take_lines,
+    add_CPFs_in_vetor,
+    check_CPF_or_dicipline_exists,
+    format_CPF,
+)
 import os
 
 # Biblioteca utilizada para gerar um código aleatório
@@ -6,17 +11,6 @@ import random
 
 
 ######################################## FUNÇÕES AUXILIARES ##################################################################
-def check_CPF_or_dicipline_exists(
-    vetor, entry
-):  # Verica se o CPF já está vincula a algum aluno
-    i = 0
-    while i < len(vetor):
-        if vetor[i] == entry:
-            return True
-        i += 1
-    return False
-
-
 # Gera um código aleatório com 9 digitos,
 def generate_random_code():  # Talvez use essa função
     code = ""
@@ -27,33 +21,6 @@ def generate_random_code():  # Talvez use essa função
         code += str(digit)
         i += 1
     return code
-
-
-def format_CPF(CPF):  # Formata o CPF
-    CPF_formated = ""
-    i = 0
-    while i < 3:
-        CPF_formated += CPF[i]
-        i += 1
-    CPF_formated += "."
-
-    i = 3
-    while i < 6:
-        CPF_formated += CPF[i]
-        i += 1
-    CPF_formated += "."
-
-    i = 6
-    while i < 9:
-        CPF_formated += CPF[i]
-        i += 1
-    CPF_formated += "-"
-
-    i = 9
-    while i < 11:
-        CPF_formated += CPF[i]
-        i += 1
-    return CPF_formated
 
 
 ######################################## FUNÇÕES AUXILIARES ##################################################################
@@ -209,19 +176,24 @@ def edit(route):
     else:
         lines = to_take_lines("data/diciplines.csv")
         name_dicipline = input("INFORME O NOME DA DISCIPLINA QUE DESEJA EDITAR: ")
-
-        i = 0
-        while i < len(lines):
-            if lines[i] == name_dicipline + "\n":
-                new_name_dicipline = input("INFORME O NOME NOME DA DISCIPLINA")
-                lines[i] = new_name_dicipline
-            i += 1
-        fp = open("data/diciplines.csv", "w")
-        i = 0
-        while i < len(lines):
-            fp.write("{}\n".format(lines[i]))
-            i += 1
-        fp.close()
+        exist = check_CPF_or_dicipline_exists(lines, name_dicipline)
+        if exist:
+            i = 0
+            while i < len(lines):
+                if lines[i] == name_dicipline + "\n":
+                    new_name_dicipline = input("INFORME O NOME NOME DA DISCIPLINA")
+                    lines[i] = new_name_dicipline
+                i += 1
+            fp = open("data/diciplines.csv", "w")
+            i = 0
+            while i < len(lines):
+                fp.write("{}\n".format(lines[i]))
+                i += 1
+            fp.close()
+        else:
+            print(
+                "A DISCUPLINA NÃO EXISTE OU É INVÁLIDA. POR FAVOR, INFORME NOVAMENTE O NOME DA DISCIPLINA"
+            )
 
 
 ######################################## FIM DA EDIÇÃO #######################################################################

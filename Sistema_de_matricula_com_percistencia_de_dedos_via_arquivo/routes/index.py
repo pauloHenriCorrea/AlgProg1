@@ -1,4 +1,7 @@
-from routes.functionalities import register, edit, to_list
+# Operações básicas
+from routes.functionalities import register, edit, to_list, remove
+
+# Funções auxíliares
 from components.index import (
     add_CPFs_in_vetor,
     format_CPF,
@@ -8,48 +11,91 @@ from components.index import (
 import os
 
 
+######################################## FUNÇÃO PARA REPETIR UMA OPERAÇÃO ENQUANTO O USUÁRIO QUISER ###########################
+def repeat(
+    function,
+    menu,
+    message,
+    route="",
+):
+    stop = False
+    while not stop:
+        function(route)
+        print("\nDESEJA {} OUTRO ALUNO?\nSIM - 1\nNÃO - 2".format(message))
+        response = input("SUA RESPOSTA: ")
+        os.system("cls" if os.name == "nt" else "clear")
+        if response == "2":
+            stop = True
+            menu()
+
+
 def student_options():
-    os.system("cls" if os.name == "nt" else "clear")
     print("\nINFORME QUAIS DAS OPERAÇÕES ABAIXO VOCÊ DESEJA REALIZAR:\n")
     print("\t1 - CADASTRAR")
     print("\t2 - EDITAR")
     print("\t3 - REMOVER")
     print("\t4 - LISTAR")
-
-    option = int(input())
-
-    os.system("cls" if os.name == "nt" else "clear")
-    match option:
-        case 1:
-            register("student")
-        case 2:
-            edit("student")
-        case 4:
-            to_list("student")
-        case default:
-            print("A operação inserida é inválida")
-
-
-def discipline_options():
-    os.system("cls" if os.name == "nt" else "clear")
-    print("\nINFORME QUAIS DAS OPERAÇÕES ABAIXO VOCÊ DESEJA REALIZAR:\n")
-    print("\t1 - CADASTRAR")
-    print("\t2 - EDITAR")
-    print("\t3 - REMOVER")
-    print("\t4 - LISTAR")
+    print("\t5 - VOLTAR")
 
     option = input()
 
-    os.system("cls" if os.name == "nt" else "clear")
     match option:
         case "1":
-            register("")
+            os.system("cls" if os.name == "nt" else "clear")
+            repeat(register, student_options, "CADASTRAR", "student")
         case "2":
-            edit("")
+            os.system("cls" if os.name == "nt" else "clear")
+            to_list()
+            repeat(edit, student_options, "EDITAR", "student")
+        case "3":
+            os.system("cls" if os.name == "nt" else "clear")
+            repeat(remove, student_options, "REMOVER", "student")
         case "4":
-            to_list("")
+            os.system("cls" if os.name == "nt" else "clear")
+            to_list("student")
+            student_options()
+        case "5":
+            os.system("cls" if os.name == "nt" else "clear")
+            return
         case default:
-            print("A operação inserida é inválida")
+            os.system("cls" if os.name == "nt" else "clear")
+            print("A OPERAÇÃO INSERIDA É INVÁLIDA")
+            student_options()
+
+
+def discipline_options():
+    print("\nINFORME QUAIS DAS OPERAÇÕES ABAIXO VOCÊ DESEJA REALIZAR:\n")
+    print("\t1 - CADASTRAR")
+    print("\t2 - EDITAR")
+    print("\t3 - REMOVER")
+    print("\t4 - LISTAR")
+    print("\t5 - VOLTAR")
+
+    option = input()
+
+    match option:
+        case "1":
+            os.system("cls" if os.name == "nt" else "clear")
+            repeat(register, discipline_options, "CADASTRAR")
+        case "2":
+            os.system("cls" if os.name == "nt" else "clear")
+            to_list()
+            repeat(edit, discipline_options, "EDITAR")
+        case "3":
+            os.system("cls" if os.name == "nt" else "clear")
+            to_list()
+            repeat(remove, discipline_options, "REMOVER")
+        case "4":
+            os.system("cls" if os.name == "nt" else "clear")
+            to_list()
+            discipline_options()
+        case "5":
+            os.system("cls" if os.name == "nt" else "clear")
+            return
+        case default:
+            os.system("cls" if os.name == "nt" else "clear")
+            print("A OPERAÇÃO INSERIDA É INVÁLIDA")
+            discipline_options()
 
 
 ######################################## INÍCIO DA MATRICULA DO ALUNO A UMA DISCIPLINA ########################################
@@ -58,32 +104,40 @@ def enroll_student_in_a_subject():
     # Pegando as linhas do arquivo de diciplinas e alunos
     lines_of_students = to_take_lines("data/students.csv")
     lines_of_diciplenes = to_take_lines("data/diciplines.csv")
+
     while not CPF_valid:
-        CPF_student = (
-            "06415852175"  # input("INFORME O CPF DO ALUNO QUE DESEJA MATRICULAR: ")
-        )
+        CPF_student = input("INFORME O CPF DO ALUNO QUE DESEJA MATRICULAR: ")
+
+        # Verifica se o CPF é válido
         if len(CPF_student) == 11:
-            # Verifica se o CPF informado existe
             CPFs = add_CPFs_in_vetor(lines_of_students)
             CPF_student_formated = format_CPF(CPF_student)
             exist_CPF_student = check_CPF_or_dicipline_exists(
                 CPFs, CPF_student_formated
             )
 
+            # Verifica se o CPF esta vinculado a algum estudante
             if exist_CPF_student:
                 CPF_valid = True
                 name_dicipline_valid = False
+
+                # Equanto o usuário não digitar um nome de uma disciplina que existe ele ficará em um laço infinito
                 while not name_dicipline_valid:
                     dicipline = input(
                         "INFORME A DISCIPLINA QUE DESEJA MATRICULAR O ALUNO: "
                     ).upper()
+
                     # Verifica se a disciplina informada existe
                     exist_discipline = check_CPF_or_dicipline_exists(
                         lines_of_diciplenes, dicipline.upper() + "\n"
                     )
+
                     if exist_discipline:
                         name_dicipline_valid = True
-                        lines_of_links = to_take_lines("data/links.csv")
+
+                        lines_of_links = to_take_lines(
+                            "data/links.csv"
+                        )  # Pega todos os vinculos de alunos e disciplinas
 
                         datas = []  # para tirar o "\n"
                         lines = []  # para tirar o "":"
@@ -97,21 +151,35 @@ def enroll_student_in_a_subject():
                         i = 0
                         while i < len(lines_of_links):
                             datas.append(lines_of_links[i].split("\n"))
-                            lines.append(datas[i][0])
-                            links.append(lines[i].split(":"))
-                            diciplines.append(links[i][0])
-                            students.append(links[i][1].split(","))
+                            print("\nDATAS: {}\n".format(datas))
 
-                            j = 0
-                            while j < len(students[i]):
-                                CPFs_students.append(students[i][j])
-                                j += 1
+                            lines.append(datas[i][0])
+                            print("\nLINES: {}\n".format(lines))
+
+                            links.append(lines[i].split(":"))
+                            print("\nLINKS: {}\n".format(links))
+
+                            diciplines.append(links[i][0])
+                            print("\nDICIPLINES: {}\n".format(diciplines))
+
+                            students.append(links[i][1].split(","))
+                            print("\nSTUDENTS: {}\n".format(students))
+
+                            # Talvez não precise dessa parte
+                            # j = 0
+                            # while j < len(students[i]):
+                            #     CPFs_students.append(students[i][j])
+                            #     j += 1
                             i += 1
+                            # print("\nCPFS: {}\n".format(CPFs_students))
 
                         # Aqui dentro tenho que arrumar uma forma de verificar se a disciplina já existe no arquivo links.csv ok
                         exist_dicipline_in_links = check_CPF_or_dicipline_exists(
                             diciplines, dicipline
                         )
+
+                        """
+                        Daqui para baixo não vai funcionar
                         # Se não existe adiciono uma nova linha e coloco o disciplina e o CPF
                         fp = open("data/links.csv", "a")
                         if not exist_dicipline_in_links:
@@ -120,9 +188,17 @@ def enroll_student_in_a_subject():
                                     dicipline.upper(), CPF_student_formated
                                 )
                             )
-                        # Se já existe adiciono o CPF desejado na linha da disciplina
                         else:
-                            i = 0
+                            # Se a disciplina já existe, verifico se o CPF já vinculado a ela
+                            exist_CPF_in_dicipline = check_CPF_or_dicipline_exists(
+                                CPFs_students, CPF_student_formated
+                            )
+
+                            if not exist_CPF_in_dicipline:
+                                print(CPFs_students)
+                                CPFs_students.append(CPF_student_formated)
+                                print(CPFs_students)
+                        """
                     else:
                         print(
                             "A DISCUPLINA NÃO EXISTE OU É INVÁLIDA. POR FAVOR, INFORME NOVAMENTE O NOME DA DISCIPLINA"

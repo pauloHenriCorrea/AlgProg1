@@ -1,10 +1,3 @@
-from routes.index import (
-    student_options,
-    discipline_options,
-    enroll_student_in_a_subject,
-)
-import os
-
 """
 * Desenvolver um sistema que permite as seguintes operações:
     => 1 - Cadastrar, editar, remover e listar alunos;
@@ -22,6 +15,13 @@ import os
     => 6 - Sair
 """
 
+from routes.index import (
+    student_options,
+    discipline_options,
+    enroll_student_in_a_subject,
+)
+import os
+
 
 def menu():
     print("\nINFORME QUAIS DAS OPERAÇÕES ABAIXO VOCÊ DESEJA REALIZAR:\n")
@@ -34,7 +34,7 @@ def menu():
 
     option = input()
 
-    # os.system("cls" if os.name == "nt" else "clear")
+    os.system("cls" if os.name == "nt" else "clear")
     match option:
         case "1":
             student_options()

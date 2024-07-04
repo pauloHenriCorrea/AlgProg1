@@ -21,14 +21,24 @@ def to_take_lines(url):  # Pega todas as linhas do arquivo.csv
 
 ###############################################################################################################################################
 def check_CPF_or_dicipline_exists(
-    vetor, entry
+    vetor, entry, function=""
 ):  # Verica se o CPF já está vincula a algum aluno
-    i = 0
-    while i < len(vetor):
-        if vetor[i] == entry:
-            return True
-        i += 1
-    return False
+    if function == "remove":
+        v = []
+        i = 0
+        while i < len(vetor):
+            if vetor[i] == entry:
+                v.append(True)
+                v.append(i)
+            i += 1
+        return v
+    else:
+        i = 0
+        while i < len(vetor):
+            if vetor[i].strip() == entry:
+                return True
+            i += 1
+        return False
 
 
 ###############################################################################################################################################

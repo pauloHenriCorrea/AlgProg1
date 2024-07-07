@@ -15,16 +15,22 @@ import os
 def repeat(
     function,
     menu,
+    to_list,
     message,
     route="",
 ):
     stop = False
     while not stop:
-        function(route)
-        print("\nDESEJA {} OUTRO ALUNO?\nSIM - 1\nNÃO - 2".format(message))
-        response = input("SUA RESPOSTA: ")
-        os.system("cls" if os.name == "nt" else "clear")
-        if response == "2":
+        to_list(route)
+        msg = "OUTRO ALUNO" if route == "student" else "OUTRA DISCIPLINA"
+        if function(route) == None:
+            print("\nDESEJA {} {}?\nSIM - 1\nNÃO - 2".format(message, msg))
+            response = input("SUA RESPOSTA: ")
+            os.system("cls" if os.name == "nt" else "clear")
+            if response == "2":
+                stop = True
+                menu()
+        else:
             stop = True
             menu()
 
@@ -42,14 +48,13 @@ def student_options():
     match option:
         case "1":
             os.system("cls" if os.name == "nt" else "clear")
-            repeat(register, student_options, "CADASTRAR", "student")
+            repeat(register, student_options, to_list, "CADASTRAR", "student")
         case "2":
             os.system("cls" if os.name == "nt" else "clear")
-            to_list()
-            repeat(edit, student_options, "EDITAR", "student")
+            repeat(edit, student_options, to_list, "EDITAR", "student")
         case "3":
             os.system("cls" if os.name == "nt" else "clear")
-            repeat(remove, student_options, "REMOVER", "student")
+            repeat(remove, student_options, to_list, "REMOVER", "student")
         case "4":
             os.system("cls" if os.name == "nt" else "clear")
             to_list("student")
@@ -76,15 +81,13 @@ def discipline_options():
     match option:
         case "1":
             os.system("cls" if os.name == "nt" else "clear")
-            repeat(register, discipline_options, "CADASTRAR")
+            repeat(register, discipline_options, to_list, "CADASTRAR")
         case "2":
             os.system("cls" if os.name == "nt" else "clear")
-            to_list()
-            repeat(edit, discipline_options, "EDITAR")
+            repeat(edit, discipline_options, to_list, "EDITAR")
         case "3":
             os.system("cls" if os.name == "nt" else "clear")
-            to_list()
-            repeat(remove, discipline_options, "REMOVER")
+            repeat(remove, discipline_options, to_list, "REMOVER")
         case "4":
             os.system("cls" if os.name == "nt" else "clear")
             to_list()

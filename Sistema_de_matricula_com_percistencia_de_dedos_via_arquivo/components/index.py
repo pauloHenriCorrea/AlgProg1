@@ -27,10 +27,12 @@ def check_CPF_or_dicipline_exists(
         v = []
         i = 0
         while i < len(vetor):
-            if vetor[i] == entry:
+            if vetor[i].strip() == entry:
                 v.append(True)
                 v.append(i)
             i += 1
+        if len(v) == 0:
+            v.append(False)
         return v
     else:
         i = 0

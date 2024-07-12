@@ -3,6 +3,7 @@ from components.index import (
     add_CPFs_in_vetor,
     check_CPF_or_dicipline_exists,
     format_CPF,
+    go_back,
 )
 
 # from routes.index import student_options
@@ -14,13 +15,6 @@ import random
 
 ######################################## FUNÇÕES AUXILIARES ##################################################################
 # Gera um código aleatório com 9 digitos,
-def go_back(parans):
-    if parans.upper() == "EXIT":
-        os.system("cls" if os.name == "nt" else "clear")
-        return True
-    return False
-
-
 def generate_random_code():  # Talvez use essa função
     code = ""
 
